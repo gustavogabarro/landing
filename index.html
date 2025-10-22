@@ -55,7 +55,7 @@
         /* --- HERO SECTION (IMPACTO VISUAL) --- */
         .dr-hero {
             /* REEMPLAZA ESTA URL CON TU IMAGEN DE FONDO */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/Imagen-de-WhatsApp-2025-03-07-a-las-10.59.14_6eca3d9c.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./Recursos/Imagen-de-WhatsApp-2025-03-07-a-las-10.59.14_6eca3d9c.jpg');
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -151,7 +151,7 @@
         .dr-historia-section {
             /* Mantenemos el fondo del paso anterior */
             /* ¡ADVERTENCIA! URL LOCAL: Esto solo funciona en tu computadora: */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Recursos/dibujo.png'); 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./Recursos/dibujo.png'); 
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -172,7 +172,7 @@
         .dr-historia-imagen-aux {
             width: 33.333%; /* Un tercio del ancho para la imagen */
             min-width: 250px; 
-            padding-right: 20px;
+            padding-right: 0px;
             order: 1; /* Coloca este elemento en primer lugar dentro del flex */
             display: flex;
             align-items: center; /* Centra la imagen verticalmente */
@@ -181,7 +181,7 @@
         .dr-historia-imagen-aux img {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
+            border-radius: 0px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
@@ -192,7 +192,7 @@
             min-width: 550px; 
             max-width: 900px; 
             
-            background-color: rgba(238, 148, 132, 0.9); /* #EE9484 con 90% de opacidad */
+            background-color: rgba(255, 255, 255, 0.9); /* #EE9484 con 90% de opacidad */
             padding: 40px;
             /* Bordes redondeados solo en los bordes DERECHOS */
             border-radius: 0 10px 10px 0; 
@@ -203,7 +203,7 @@
 
         /* Estilos de texto dentro del rectángulo rosa */
         .dr-historia-content h2, .dr-historia-content .dr-titulo-destacado {
-            color: #5E57A4; /* Título morado para contraste */
+            color: #e41549; /* Título morado para contraste */
             text-shadow: none; 
             text-align: left; 
         }
@@ -455,7 +455,7 @@
         <header class="dr-hero">
             <div class="dr-container">
                 <h1>Desayuno Real</h1>
-                <h2>Un gesto de servicio</h2>
+                <h2></h2>
                 <p class="dr-info">
                     Fecha: 6 de marzo de 2026 | Hora: 8:30 AM | Lugar: A confirmar
                 </p>
@@ -481,14 +481,14 @@
                 <div class="dr-historia-wrapper">
                 
                     <div class="dr-historia-imagen-aux">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/image/desayuno-real-2025-10.jpg" alt="Desayuno">
+                        <img src="./image/desayuno-real-2025-10.jpg" alt="Desayuno">
                     </div>
                 
                     <div class="dr-historia-content">
                         
-                        <h2 class="dr-titulo-destacado">Un Encuentro que Redefine el Liderazgo</h2> 
-                        <p>
-                            Un homenaje exclusivo a la Reina y Virreina Nacional de la Vendimia, reinas departamentales y a la vitivinicultura, uno de los sectores más productivos de la República Argentina.
+                        <h1 class="dr-titulo-destacado">Un encuentro que redefine el liderazgo</h1>
+                        <br>
+                          <strong>Un homenaje exclusivo a la Reina y Virreina Nacional de la Vendimia, reinas departamentales y a la vitivinicultura, uno de los sectores más productivos de la República Argentina.</strong>  <br>
                             <br><br>
                             Ideado y creado por La Cooperativa Empresa Eléctrica de Godoy Cruz Ltda. (provincia de Mendoza), y Grupo Cooperativa – Medios de Comunicación (Región Cuyo).
                         </p>
@@ -527,11 +527,11 @@
                 <h3>Organizan</h3>
                 <div class="dr-sponsors-grid">
                     <a href="https://ciudadano.news/" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/logo_cn.svg" alt="Logo de Ciudadano News">
+                        <img src="./Recursos/logo_cn.svg" alt="Logo de Ciudadano News">
                     </a>
                     
                     <a href="https://www.cegc.com.ar/" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/logo_cegc.svg" alt="Logo de Cooperativa Empresa Eléctrica de Godoy Cruz">
+                        <img src="./Recursos/logo_cegc.svg" alt="Logo de Cooperativa Empresa Eléctrica de Godoy Cruz">
                     </a>
                 </div>
             </div>
@@ -542,51 +542,51 @@
                 <h3>Nos acompañan</h3>
                 <div class="dr-sponsors-grid">
                     <a href="[URL_DEL_SPONSOR_1]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/tu_logo.svg" alt="Logo de Sponsor 1">
+                        <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 1">
                     </a>
                     
                     <a href="[URL_DEL_SPONSOR_2]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/tu_logo.svg" alt="Logo de Sponsor 2">
+                        <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 2">
                     </a>
                     
                     <a href="[URL_DEL_SPONSOR_3]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/tu_logo.svg" alt="Logo de Sponsor 3">
+                        <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 3">
                     </a>
 
                     <a href="[URL_DEL_SPONSOR_4]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/tu_logo.svg" alt="Logo de Sponsor 4">
+                        <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 4">
                     </a>
                     
                     <a href="[URL_DEL_SPONSOR_1]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/tu_logo.svg" alt="Logo de Sponsor 5">
+                        <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 5">
                     </a>
                     
                     <a href="[URL_DEL_SPONSOR_2]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/tu_logo.svg" alt="Logo de Sponsor 6">
+                        <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 6">
                     </a>
                     
                     <a href="[URL_DEL_SPONSOR_3]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/tu_logo.svg" alt="Logo de Sponsor 7">
+                        <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 7">
                     </a>
 
                     <a href="[URL_DEL_SPONSOR_4]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/tu_logo.svg" alt="Logo de Sponsor 8">
+                        <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 8">
                     </a>
 
                     <a href="[URL_DEL_SPONSOR_1]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/tu_logo.svg" alt="Logo de Sponsor 9">
+                        <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 9">
                     </a>
                     
                     <a href="[URL_DEL_SPONSOR_2]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/tu_logo.svg" alt="Logo de Sponsor 10">
+                        <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 10">
                     </a>
                     
                     <a href="[URL_DEL_SPONSOR_3]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/tu_logo.svg" alt="Logo de Sponsor 11">
+                        <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 11">
                     </a>
 
                     <a href="[URL_DEL_SPONSOR_4]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
-                        <img src="file:///E:/_Gustavo/Trabajos/_Ciudadano%20NEWS/Desayuno%20Real%202026/_landing/Recursos/tu_logo.svg" alt="Logo de Sponsor 12">
+                        <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 12">
                     </a>
                 </div>
             </div>
