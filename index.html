@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desayuno Real | Homenaje a las reinas</title>
-    
+    <title>Desayuno Real</title>
+
     <style>
         /* ======================================= */
         /* ESTILOS ENCAPSULADOS PARA DESAYUNO REAL (DR) */
@@ -13,7 +13,7 @@
         /* Importar fuentes de Google */
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap');
 
-        /* Reset de estilos básicos y fuentes para el contenedor principal */
+        /* --- Global Reset & Base Styles --- */
         .dr-landing * {
             box-sizing: border-box;
             margin: 0;
@@ -27,39 +27,36 @@
             line-height: 1.6;
         }
 
-        /* Contenedor de ancho fijo (para texto y secciones no carrusel) */
         .dr-container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
-        /* Títulos y Espaciado de Sección */
-        /* Padding general de secciones (Desktop) */
+        /* --- Títulos y Espaciado de Sección --- */
         .dr-section { padding: 60px 0; }
-        .dr-section h2 {
+        
+        .dr-section h2, .dr-section h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 40px;
             color: #5E57A4; /* Morado/Índigo */
         }
+        
+        .dr-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+        
         .dr-section h3 {
-             font-family: 'Playfair Display', serif;
-             font-size: 1.8rem;
-             text-align: center;
-             margin-bottom: 30px;
-             color: #5E57A4;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
         }
 
         /* --- HERO SECTION (IMPACTO VISUAL) --- */
         .dr-hero {
-            /* REEMPLAZA ESTA URL CON TU IMAGEN DE FONDO */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./Recursos/Imagen-de-WhatsApp-2025-03-07-a-las-10.59.14_6eca3d9c.jpg');
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./image/DR_hero.png') no-repeat center / cover;
             color: #fff;
             text-align: center;
             padding: 120px 20px;
@@ -69,11 +66,11 @@
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             margin-bottom: 8px;
-            color: #EE9484; /* Dorado/Cobre */
+            color: #ffffff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .dr-hero h2 { /* Subtítulo en el Hero */
+        .dr-hero h2 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 20px;
@@ -148,85 +145,70 @@
             line-height: 1.2;
         }
 
-        /* --- HISTORIA Y VALOR --- */
+        /* --- HISTORIA Y VALOR (Con Animación) --- */
         .dr-historia-section {
-            /* Mantenemos el fondo del paso anterior */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./Recursos/dibujo.png'); 
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            color: #fff; 
-            padding: 80px 0; 
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./Recursos/dibujo.png') no-repeat center / cover;
+            color: #fff;
+            padding: 80px 0;
         }
 
-        /* Nuevo contenedor que gestiona el layout (Flexbox) y la alineación */
         .dr-historia-wrapper {
-            display: flex; /* Habilita el diseño flexible */
+            display: flex;
             max-width: 100%;
-            /* Alinea el contenido (caja de texto e imagen auxiliar) al borde izquierdo */
-            margin-right: auto; 
             margin-left: 0;
+            margin-right: auto;
         }
 
-        /* Estilo para la imagen auxiliar a la izquierda (1/3) */
         .dr-historia-imagen-aux {
-            width: 33.333%; /* Un tercio del ancho para la imagen */
-            min-width: 250px; 
-            padding-right: 0px;
-            order: 1; /* Coloca este elemento en primer lugar dentro del flex */
+            width: 33.333%;
+            min-width: 250px;
+            padding-right: 0;
+            order: 1;
             display: flex;
-            align-items: center; /* Centra la imagen verticalmente */
-            justify-content: flex-end; /* Alinea la imagen a la derecha del 1/3 */
+            align-items: center;
+            justify-content: flex-end;
         }
         .dr-historia-imagen-aux img {
             max-width: 100%;
             height: auto;
-            border-radius: 0px;
+            border-radius: 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Contenedor que va a animarse y ser el rectángulo rosa (2/3 del ancho) */
         .dr-historia-content {
-            /* Ocupa dos tercios (aprox.) del ancho de la pantalla */
-            width: 66.666%; 
-            min-width: 550px; 
-            max-width: 900px; 
-            
-            background-color: rgba(255, 255, 255, 0.9); /* Blanco con 90% de opacidad */
+            width: 66.666%;
+            min-width: 550px;
+            max-width: 900px;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 40px;
-            /* Bordes redondeados solo en los bordes DERECHOS */
-            border-radius: 0 10px 10px 0; 
+            border-radius: 0 10px 10px 0;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            color: #333; 
-            order: 2; /* Coloca este elemento en segundo lugar dentro del flex */
+            color: #333;
+            order: 2;
         }
 
-        /* Estilos de texto dentro del rectángulo rosa */
         .dr-historia-content h1, .dr-historia-content .dr-titulo-destacado {
-            color: #e41549; /* Título rojo/rosa para contraste */
-            text-shadow: none; 
-            text-align: left; 
+            color: #e41549;
+            text-shadow: none;
+            text-align: left;
         }
 
         .dr-historia-content p {
             color: #333;
-            max-width: none; 
-            text-align: left; 
+            max-width: none;
+            text-align: left;
         }
-
 
         /* --- ANIMACIÓN ON SCROLL --- */
-        /* Estado Inicial: Fuera de la pantalla a la DERECHA y oculto */
         .dr-historia-animacion {
-            transform: translateX(100%); 
+            transform: translateX(100%);
             opacity: 0;
-            transition: transform 1s ease-out, opacity 0.8s ease-out; /* Prepara la transición */
+            transition: transform 1s ease-out, opacity 0.8s ease-out;
         }
 
-        /* Estado Final: Visible y en su posición, se activa con JS (clase .is-visible) */
         .dr-historia-animacion.is-visible {
-            transform: translateX(0); /* Vuelve a la posición normal */
-            opacity: 1; /* Se hace visible */
+            transform: translateX(0);
+            opacity: 1;
         }
 
         /* --- CARRUSEL DE IMÁGENES --- */
@@ -235,8 +217,7 @@
             max-width: 100vw;
             overflow: hidden;
             padding: 0;
-            /* Eliminamos margin-bottom: 60px; para mobile y lo controlamos en el media query */
-            margin-bottom: 40px; 
+            margin-bottom: 40px;
         }
 
         .dr-carousel-inner {
@@ -244,14 +225,13 @@
             transition: transform 0.5s ease-in-out;
         }
 
-        /* Desktop: 3 imágenes por vista */
         .dr-carousel-item {
             flex: 0 0 calc(100% / 3);
             min-width: calc(100% / 3);
             overflow: hidden;
             height: 400px;
         }
-        
+
         .dr-carousel-item img {
             width: 100%;
             height: 100%;
@@ -277,31 +257,65 @@
         .dr-carousel-button:hover:not(:disabled) {
             background-color: rgba(0, 0, 0, 0.8);
         }
-        
+
         .dr-carousel-button:disabled {
-             cursor: not-allowed;
-             opacity: 0.3;
+            cursor: not-allowed;
+            opacity: 0.3;
         }
 
         .dr-carousel-button.prev { left: 10px; }
         .dr-carousel-button.next { right: 10px; }
-        
+
+        /* --- SECCIÓN DE VIDEOS DE YOUTUBE --- */
+        .dr-videos-section {
+            background-color: #f0f0f0;
+            padding: 60px 0;
+        }
+        .dr-videos-grid {
+            /* 💡 CORRECCIÓN: Cambia la dirección del flexbox a columna (uno arriba del otro) */
+            display: flex;
+            flex-direction: column; 
+            gap: 30px;
+            justify-content: center;
+            align-items: center; /* Centra los videos apilados */
+            max-width: 800px; /* Limita el ancho de los videos apilados en escritorio */
+            margin: 0 auto; /* Centra la columna de videos */
+        }
+        .dr-video-container {
+            /* Ahora que están apilados, flex: 1 ya no es necesario, pero lo mantenemos como 
+               una regla de reseteo por si se cambia el flex-direction */
+            flex: none; 
+            position: relative;
+            width: 100%; /* Ocupa el 100% del dr-videos-grid (máx 800px) */
+            /* truco para mantener relación de aspecto 16:9: (9/16)*100 = 56.25% */
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .dr-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            border: none;
+        }
+        /* --- FIN CORRECCIÓN --- */
+
         /* --- SECCIÓN DE MAPA --- */
         .dr-map-section {
-            padding-top: 0; 
+            padding-top: 0;
             padding-bottom: 0;
-        }
-        
-        .dr-map-section .dr-container {
-             /* Eliminamos padding-bottom: 40px; y lo controlamos en el media query */
-             padding-bottom: 0;
         }
 
         .dr-map-container {
             width: 100vw;
-            margin-left: calc(50% - 50vw); 
+            margin-left: calc(50% - 50vw);
             height: 450px;
-            overflow: hidden; 
+            overflow: hidden;
             margin-bottom: 60px;
         }
 
@@ -315,14 +329,14 @@
         .dr-sponsors-section {
             background-color: #fff;
             color: #5E57A4;
-            padding-top: 0; 
-            padding-bottom: 60px; 
+            padding-top: 0;
+            padding-bottom: 60px;
             text-align: center;
         }
 
         .dr-sponsors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 30px;
             margin-top: 30px;
             align-items: center;
@@ -336,14 +350,15 @@
             padding: 15px 5px;
             background-color: #fff;
             border-radius: 8px;
-            height: 100px; 
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
-            transition: transform 0.3s ease;
+            height: 200px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
         }
-        
+
         .dr-sponsor-item:hover {
             transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .dr-sponsor-item img {
@@ -354,7 +369,7 @@
             object-fit: contain;
             filter: grayscale(10%);
         }
-        
+
         /* --- FOOTER --- */
         .dr-footer {
             background-color: #000;
@@ -364,24 +379,48 @@
             font-size: 0.9rem;
         }
 
+        /* --- LOGO FLOTANTE (STICKY) --- */
+        .dr-floating-logo {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 250px;
+            height: auto;
+            padding: 5px;
+            background-color: transparent;
+            border-radius: 8px;
+            box-shadow: none;
+            transition: opacity 0.3s;
+        }
+        .dr-floating-logo:hover {
+            opacity: 0.8;
+        }
+        .dr-floating-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* ======================================= */
         /* MEDIA QUERIES (RESPONSIVE) */
         /* ======================================= */
+
         @media (max-width: 1200px) {
-            /* Mantenemos la lógica de la Historia */
             .dr-historia-wrapper {
-                flex-direction: column; 
+                flex-direction: column;
                 margin: 0 auto;
-                padding: 0 15px;
+                padding-left: 15px;
+                padding-right: 15px;
             }
-            
+
             .dr-historia-imagen-aux, .dr-historia-content {
                 width: 100%;
                 min-width: auto;
                 padding-right: 0;
-                order: initial; 
+                order: initial;
             }
-            
+
             .dr-historia-imagen-aux {
                 padding-bottom: 20px;
                 justify-content: center;
@@ -389,19 +428,18 @@
             .dr-historia-imagen-aux img {
                 max-width: 80%;
             }
-            
+
             .dr-historia-content {
-                border-radius: 10px; /* Bordes redondeados completos en mobile */
+                border-radius: 10px;
             }
-            
+
             .dr-historia-animacion {
-                 transform: translateX(0); 
-                 opacity: 1;
+                transform: translateX(0);
+                opacity: 1;
             }
         }
 
         @media (max-width: 992px) {
-            /* Carrusel en Tablet: 1 imagen */
             .dr-carousel-item {
                 flex: 0 0 100%;
                 min-width: 100%;
@@ -409,29 +447,40 @@
         }
 
         @media (max-width: 768px) {
-            /* 1. Reducir espacios entre módulos (padding general de secciones) */
-            .dr-section { 
-                padding: 30px 0; /* De 40px a 30px */
+            /* 💡 Nota: La configuración de videos en móvil ya estaba como flex-direction: column, 
+               pero se re-valida para asegurar que la regla de escritorio no interfiera. */
+            .dr-videos-grid {
+                flex-direction: column;
+                gap: 20px;
+                max-width: 100%; /* En móvil debe usar todo el ancho */
             }
             
-            .dr-hero { padding: 60px 15px; } /* Reducir Hero */
+            .dr-floating-logo {
+                width: 80px;
+                top: 10px;
+                right: 10px;
+            }
+
+            .dr-section {
+                padding: 30px 0;
+            }
+
+            .dr-hero { padding: 60px 15px; }
             .dr-hero h1 { font-size: 2.5rem; }
             .dr-hero h2 { font-size: 1.5rem; }
-            .dr-section h2 { font-size: 1.8rem; margin-bottom: 20px; } /* Títulos más pequeños */
+            .dr-section h2 { font-size: 1.8rem; margin-bottom: 20px; }
             .dr-section h3 { font-size: 1.3rem; margin-bottom: 15px; }
-            
-            /* 4. Reducir unidades del contador */
+
             .dr-contador-section { padding: 30px 0; }
             .dr-tiempo-unidad {
-                padding: 8px 10px; /* Menos padding */
-                min-width: 50px; /* Menor ancho mínimo */
+                padding: 8px 10px;
+                min-width: 50px;
             }
-            .dr-tiempo-unidad span { 
-                font-size: 1.5rem; /* Fuente más pequeña */
+            .dr-tiempo-unidad span {
+                font-size: 1.5rem;
             }
-            #dr-contador-display { gap: 8px; margin-top: 15px; } /* Menos gap */
+            #dr-contador-display { gap: 8px; margin-top: 15px; }
 
-            /* AJUSTE DEL RECTÁNGULO EN MÓVILES */
             .dr-historia-section { padding: 40px 0; }
             .dr-historia-content {
                 padding: 20px;
@@ -442,31 +491,28 @@
                 margin-bottom: 10px;
             }
 
-            /* 3. Carrusel en mobile: 1 imagen (ya estaba configurado, pero se repite para claridad) */
             .dr-carousel-item {
-                flex: 0 0 100%;
-                min-width: 100%;
-                height: 250px; /* Un poco más bajo */
+                height: 250px;
             }
             .dr-carousel-wrapper {
-                 margin-bottom: 30px; /* Menos margen inferior */
+                margin-bottom: 30px;
             }
             .dr-carousel-button {
                 padding: 8px 6px;
                 font-size: 1rem;
             }
 
-            .dr-map-container { height: 250px; margin-bottom: 30px; } /* Mapa más bajo y menos margen */
-            
+            .dr-map-container { height: 250px; margin-bottom: 30px; }
+
             .dr-sponsors-grid {
-                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
-                 gap: 15px; /* Menos espacio entre logos */
-                 margin-top: 20px;
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 15px;
+                margin-top: 20px;
             }
-             .dr-sponsors-section {
-                 padding-bottom: 30px; /* Reducir padding inferior */
+            .dr-sponsors-section {
+                padding-bottom: 30px;
             }
-            .dr-footer { padding: 15px 0; } /* Footer más compacto */
+            .dr-footer { padding: 15px 0; }
         }
     </style>
 </head>
@@ -474,21 +520,25 @@
 
     <div class="dr-landing">
 
-        <header class="dr-hero">
+        <a href="#top" class="dr-floating-logo">
+            <img src="./image/DR_logo_flotante.png" alt="Logo de Desayuno Real">
+        </a>
+
+        <header class="dr-hero" id="top">
             <div class="dr-container">
                 <h1>Desayuno Real</h1>
-                <h2></h2>
+                <h2>Un encuentro que redefine el liderazgo</h2>
                 <p class="dr-info">
                     Fecha: 6 de marzo de 2026 | Hora: 8:30 AM | Lugar: A confirmar
                 </p>
-                <a href="https://forms.gle/E1nLNpWSLKZnyEFZ7" class="dr-cta-button" target="_blank" rel="noopener noreferrer">Asistiré</a>
+                <a href="https://forms.gle/E1nLNpWSLKZnyEFZ7" class="dr-cta-button" target="_blank" rel="noopener noreferrer" role="button">Asistiré</a>
             </div>
         </header>
 
         <section class="dr-section dr-contador-section">
             <div class="dr-container">
                 <h2>El momento se acerca...</h2>
-                <div id="dr-contador-display">
+                <div id="dr-contador-display" aria-live="off">
                     <div class="dr-tiempo-unidad"><span id="dr-dias">00</span>Días</div>
                     <div class="dr-tiempo-unidad"><span id="dr-horas">00</span>Horas</div>
                     <div class="dr-tiempo-unidad"><span id="dr-minutos">00</span>Minutos</div>
@@ -499,60 +549,92 @@
 
         <section class="dr-section dr-historia-section">
             <div class="dr-historia-animacion">
-                
                 <div class="dr-historia-wrapper">
-                
+
                     <div class="dr-historia-imagen-aux">
                         <img src="./image/desayuno-real-2025-10.jpg" alt="Desayuno">
                     </div>
-                
+
                     <div class="dr-historia-content">
-                        
                         <h1 class="dr-titulo-destacado">Un encuentro que redefine el liderazgo</h1>
                         <br>
-                        <strong>Un homenaje exclusivo a la Reina y Virreina Nacional de la Vendimia, reinas departamentales y a la vitivinicultura, uno de los sectores más productivos de la República Argentina.</strong>  <br>
-                            <br><br>
-                            Ideado y creado por La Cooperativa Empresa Eléctrica de Godoy Cruz Ltda. (provincia de Mendoza), y Grupo Cooperativa – Medios de Comunicación (Región Cuyo).
+                        <p>
+                            <strong>Un homenaje exclusivo a la Reina y Virreina Nacional de la Vendimia, reinas departamentales y a la vitivinicultura, uno de los sectores más productivos de la República Argentina.</strong>  <br>
+                                                         <br><br>
+                                                         Ideado y creado por La Cooperativa Empresa Eléctrica de Godoy Cruz Ltda. (provincia de Mendoza), y Grupo Cooperativa – Medios de Comunicación (Región Cuyo).
                         </p>
-                        
-                    </div> </div> </div> 
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="dr-section">
              <div class="dr-container">
-                <h2>Momentos reales</h2>
+                 <h2>Momentos reales</h2>
              </div>
-            <div class="dr-carousel-wrapper">
-                <div class="dr-carousel-inner" id="dr-carousel-inner">
-                    <div class="dr-carousel-item"><img src="https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/DSC06440.jpg" alt="Foto de Desayuno Real 1"></div>
-                    <div class="dr-carousel-item"><img src="https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/DSC06454_1.jpg" alt="Foto de Desayuno Real 2"></div>
-                    <div class="dr-carousel-item"><img src="https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/DSC06556.jpg" alt="Foto de Desayuno Real 3"></div>
-                    <div class="dr-carousel-item"><img src="https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/DSC06574.jpg" alt="Foto de Desayuno Real 4"></div>
-                    <div class="dr-carousel-item"><img src="https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/DSC06585.jpg" alt="Foto de Desayuno Real 5"></div>
-                    <div class="dr-carousel-item"><img src="https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/DSC06634_1.jpg" alt="Foto de Desayuno Real 6"></div>
+             <div class="dr-carousel-wrapper" role="region" aria-label="Carrusel de fotos del evento">
+                 <div class="dr-carousel-inner" id="dr-carousel-inner">
+                      <div class="dr-carousel-item"><img src="https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/DSC06440.jpg" alt="Foto de Desayuno Real 1"></div>
+                      <div class="dr-carousel-item"><img src="https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/DSC06454_1.jpg" alt="Foto de Desayuno Real 2"></div>
+                      <div class="dr-carousel-item"><img src="https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/DSC06556.jpg" alt="Foto de Desayuno Real 3"></div>
+                      <div class="dr-carousel-item"><img src="https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/DSC06574.jpg" alt="Foto de Desayuno Real 4"></div>
+                      <div class="dr-carousel-item"><img src="https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/DSC06585.jpg" alt="Foto de Desayuno Real 5"></div>
+                      <div class="dr-carousel-item"><img src="https://www.mendoza.gov.ar/wp-content/uploads/sites/5/2025/03/DSC06634_1.jpg" alt="Foto de Desayuno Real 6"></div>
+                 </div>
+                 <button class="dr-carousel-button prev" id="dr-carousel-prev" aria-label="Anterior">❮</button>
+                 <button class="dr-carousel-button next" id="dr-carousel-next" aria-label="Siguiente">❯</button>
+             </div>
+        </section>
+
+        <section class="dr-section dr-videos-section">
+            <div class="dr-container">
+                <h2>Mirá los mejores momentos</h2>
+                <div class="dr-videos-grid"> 
+
+                    <div class="dr-video-container">
+                        <iframe src="https://www.youtube.com/embed/FmsZ0D5OPHQ?si=oGzTib5WFbLsnKl8&controls=1&rel=0"
+                                title="Video 1 de Desayuno Real"
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                loading="lazy">
+                        </iframe>
+                    </div>
+
+                    <div class="dr-video-container">
+                        <iframe src="https://www.youtube.com/embed/FmsZ0D5OPHQ?si=oGzTib5WFbLsnKl8&controls=1&rel=0"
+                                title="Video 2 de Desayuno Real"
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                loading="lazy">
+                        </iframe>
+                    </div>
+
                 </div>
-                <button class="dr-carousel-button prev" id="dr-carousel-prev" aria-label="Anterior">❮</button>
-                <button class="dr-carousel-button next" id="dr-carousel-next" aria-label="Siguiente">❯</button>
             </div>
         </section>
-        
+
         <section class="dr-section dr-map-section">
             <div class="dr-container">
                 <h2>Ubicación del evento</h2>
             </div>
             <div class="dr-map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d26795.33335006546!2d-68.8143298518181!3d-32.91358798344047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d-32.896406!2d-68.8326788!4m5!1s0x967e0dcac1b78d11%3A0x401ba2de0f77a930!2sQuinta%20Do%C3%B1a%20Elvira%2C%20callej%C3%B3n%20famatina%201783%20rodeo%20de%20la%20cruz%205525%2C%20Mendoza!3m2!1d-32.9307103!2d-68.7622521!5e0!3m2!1ses-419!2sar!4v1761057444580!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d26795.33335006546!2d-68.8143298518181!3d-32.91358798344047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d-32.896406!2d-68.8326788!4m5!1s0x967e0dcac1b78d11%3A0x401ba2de0f77a930!2sQuinta%20Do%C3%B1a%20Elvira%2C%20callej%C3%B3n%20famatina%201783%20rodeo%20de%20la%20cruz%205525%2C%20Mendoza!3m2!1d-32.9307103!2d-68.7622521!5e0!3m2!1ses-419!2sar!4v1761057444580!5m2!1ses-419!2sar"
+                        title="Mapa de ubicación del evento"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </section>
 
-        <section class="dr-section dr-sponsors-section" style="padding-bottom: 0;">
+        <section class="dr-section dr-sponsors-section">
             <div class="dr-container">
                 <h3>Organizan</h3>
                 <div class="dr-sponsors-grid">
                     <a href="https://ciudadano.news/" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
                         <img src="./Recursos/logo_cn.svg" alt="Logo de Ciudadano News">
                     </a>
-                    
+
                     <a href="https://www.cegc.com.ar/" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
                         <img src="./Recursos/logo_cegc.svg" alt="Logo de Cooperativa Empresa Eléctrica de Godoy Cruz">
                     </a>
@@ -560,7 +642,7 @@
             </div>
         </section>
 
-        <section class="dr-section dr-sponsors-section">
+        <section class="dr-section dr-sponsors-section" style="padding-top: 0;">
             <div class="dr-container">
                 <h3>Nos acompañan</h3>
                 <div class="dr-sponsors-grid">
@@ -606,39 +688,25 @@
 
         <footer class="dr-footer">
             <div class="dr-container">
-                <p>© 2025 Desayuno Real. Todos los derechos reservados. | Preguntas: info@desayunoreal.com</p>
+                <p>© 2025 Desayuno Real. Todos los derechos reservados. | Preguntas: <a href="mailto:info@desayunoreal.com" style="color: #fff; text-decoration: underline;">info@desayunoreal.com</a></p>
             </div>
         </footer>
 
     </div>
-    
+
     <script>
         // =======================================
         // SCRIPT PARA EL CONTADOR REGRESIVO (DR)
         // =======================================
-
-        // *** AJUSTA ESTA FECHA AL DÍA DE TU EVENTO REAL ***
         const drFechaEvento = new Date("Mar 6, 2026 08:30:00").getTime();
+        const padToTwoDigits = (num) => String(num).padStart(2, '0');
+        const drMS_DIA = 86400000;
+        const drMS_HORA = 3600000;
+        const drMS_MINUTO = 60000;
 
         function actualizarContador() {
             const drAhora = new Date().getTime();
-            const drDistancia = drFechaEvento - drAhora;
-
-            // Cálculos de tiempo
-            const drMS_DIA = 1000 * 60 * 60 * 24;
-            const drMS_HORA = 1000 * 60 * 60;
-            const drMS_MINUTO = 1000 * 60;
-
-            const drDias = Math.floor(drDistancia / drMS_DIA);
-            const drHoras = Math.floor((drDistancia % drMS_DIA) / drMS_HORA);
-            const drMinutos = Math.floor((drDistancia % drMS_HORA) / drMS_MINUTO);
-            const drSegundos = Math.floor((drDistancia % drMS_MINUTO) / 1000);
-
-            // Obtener elementos
-            const drDiasEl = document.getElementById("dr-dias");
-            const drHorasEl = document.getElementById("dr-horas");
-            const drMinutosEl = document.getElementById("dr-minutos");
-            const drSegundosEl = document.getElementById("dr-segundos");
+            let drDistancia = drFechaEvento - drAhora;
 
             if (drDistancia < 0) {
                 clearInterval(drContador);
@@ -648,19 +716,30 @@
                 }
                 return;
             }
-            
-            // Actualizar el DOM
-            if (drDiasEl && drHorasEl && drMinutosEl && drSegundosEl) {
-                // Función padStart() para asegurar 2 dígitos
-                drDiasEl.innerHTML = drDias.toString().padStart(2, '0');
-                drHorasEl.innerHTML = drHoras.toString().padStart(2, '0');
-                drMinutosEl.innerHTML = drMinutos.toString().padStart(2, '0');
-                drSegundosEl.innerHTML = drSegundos.toString().padStart(2, '0');
-            }
 
+            const drDias = Math.floor(drDistancia / drMS_DIA);
+            drDistancia %= drMS_DIA;
+            const drHoras = Math.floor(drDistancia / drMS_HORA);
+            drDistancia %= drMS_HORA;
+            const drMinutos = Math.floor(drDistancia / drMS_MINUTO);
+            drDistancia %= drMS_MINUTO;
+            const drSegundos = Math.floor(drDistancia / 1000);
+
+            const elements = {
+                dias: document.getElementById("dr-dias"),
+                horas: document.getElementById("dr-horas"),
+                minutos: document.getElementById("dr-minutos"),
+                segundos: document.getElementById("dr-segundos")
+            };
+
+            if (elements.dias && elements.horas && elements.minutos && elements.segundos) {
+                elements.dias.textContent = padToTwoDigits(drDias);
+                elements.horas.textContent = padToTwoDigits(drHoras);
+                elements.minutos.textContent = padToTwoDigits(drMinutos);
+                elements.segundos.textContent = padToTwoDigits(drSegundos);
+            }
         }
 
-        // Ejecutar la función inmediatamente y luego cada segundo
         actualizarContador();
         const drContador = setInterval(actualizarContador, 1000);
 
@@ -676,60 +755,38 @@
             const totalItems = drCarouselItems.length;
             let currentIndex = 0;
 
-            // *** MODIFICACIÓN AQUÍ: DEVOLVER 1 para mobile/tablet (992px)
             function getItemsPerView() {
-                // Mobile/Tablet: 1 (<= 992px), Desktop: 3 (default)
-                if (window.innerWidth <= 992) return 1; 
-                return 3;
+                return window.innerWidth <= 992 ? 1 : 3;
             }
-            // *** FIN MODIFICACIÓN
 
             function updateCarousel() {
                 const itemsPerView = getItemsPerView();
-                
-                // Si itemsPerView es 1, el desplazamiento es del 100% por cada item. 
-                // Si itemsPerView es 3, el desplazamiento es de (100 / 3)% por cada item.
-                const itemWidthPercentage = 100 / totalItems;
                 const offsetPercentage = (100 / itemsPerView) * currentIndex;
-                
+
                 drCarouselInner.style.transform = `translateX(-${offsetPercentage}%)`;
 
                 drPrevBtn.disabled = currentIndex === 0;
-                // El límite es cuando el ítem actual es el último que permite mostrar una vista completa
-                drNextBtn.disabled = currentIndex >= totalItems - itemsPerView; 
+                drNextBtn.disabled = currentIndex >= totalItems - itemsPerView;
             }
 
             drNextBtn.addEventListener('click', () => {
                 const itemsPerView = getItemsPerView();
-                
-                if (currentIndex < totalItems - itemsPerView) {
-                    currentIndex++;
-                } else {
-                    currentIndex = totalItems - itemsPerView; 
-                }
+                currentIndex = Math.min(currentIndex + 1, totalItems - itemsPerView);
                 updateCarousel();
             });
 
             drPrevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                } else {
-                    currentIndex = 0; 
-                }
+                currentIndex = Math.max(currentIndex - 1, 0);
                 updateCarousel();
             });
 
             window.addEventListener('resize', () => {
                 const itemsPerView = getItemsPerView();
-                // Reajusta el índice al redimensionar para que no quede fuera de rango
-                if (currentIndex > totalItems - itemsPerView) {
-                    currentIndex = Math.max(0, totalItems - itemsPerView);
-                }
-                // Si pasamos a mobile (itemsPerView=1), queremos que el desplazamiento sea de 1 en 1
-                updateCarousel(); 
+                currentIndex = Math.min(currentIndex, totalItems - itemsPerView);
+                currentIndex = Math.max(0, currentIndex);
+                updateCarousel();
             });
 
-            // Inicializar el carrusel al cargar la página
             updateCarousel();
         });
 
@@ -740,32 +797,23 @@
         document.addEventListener('DOMContentLoaded', function() {
             const drHistoriaSection = document.querySelector('.dr-historia-animacion');
 
-            if (!drHistoriaSection) return; // Salir si el elemento no existe
+            if (!drHistoriaSection) return;
 
             function checkVisibility() {
-                // Obtener la posición del elemento y del viewport
                 const rect = drHistoriaSection.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
 
-                // Definimos el punto de activación: cuando el 75% del elemento está visible
-                const isVisible = (rect.top <= windowHeight * 0.75) && (rect.bottom >= 0);
+                const isVisible = rect.top <= windowHeight * 0.75;
 
-                // Solo aplicar la clase si es visible Y si estamos en Desktop (donde la animación tiene sentido)
-                // Se ha quitado la restricción de mobile en el CSS, así que se aplica siempre que sea visible,
-                // pero el CSS en mobile ya ignora la animación (transform: translateX(0);)
                 if (isVisible) {
                     drHistoriaSection.classList.add('is-visible');
-                    // Se remueven los listeners para que la animación solo se ejecute una vez
                     window.removeEventListener('scroll', checkVisibility);
                     window.removeEventListener('resize', checkVisibility);
                 }
             }
 
-            // Monitorear el scroll y resize para activar la animación
             window.addEventListener('scroll', checkVisibility);
             window.addEventListener('resize', checkVisibility);
-
-            // Ejecutar al cargar la página por si ya está visible
             checkVisibility();
         });
     </script>
