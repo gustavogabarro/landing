@@ -45,7 +45,7 @@
         }
         
         .dr-section h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 40px;
         }
         
@@ -54,15 +54,54 @@
             margin-bottom: 30px;
         }
 
-        /* --- HERO SECTION (IMPACTO VISUAL) --- */
+        /* ------------------------------------------- */
+        /* --- CORRECCIONES EN HERO SECTION --- */
+        /* ------------------------------------------- */
+        
+        /* Contenedor principal que contendrá la imagen (fondo) y el texto (primer plano) */
         .dr-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./image/DR_hero.png') no-repeat center / cover;
-            color: #fff;
-            text-align: center;
-            padding: 120px 20px;
+            position: relative;
+            /* Se eliminan el padding y el background de imagen aquí. */
+            padding: 0; 
+            background: none;
         }
 
-        .dr-hero h1 {
+        /* Contenedor de la imagen (Desktop: cubre todo el Hero) */
+        .dr-hero-image-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 600px; /* Alto fijo para Desktop */
+        }
+        
+        .dr-hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Asegura que la imagen 1920x1080 cubra el contenedor */
+            display: block;
+        }
+
+        /* Contenedor del contenido (Textos, CTA, etc.) */
+        .dr-hero-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5; /* Asegura que esté por encima de la imagen */
+            color: #fff;
+            text-align: center;
+            /* Se utiliza Flexbox para centrar el contenido verticalmente */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6); /* Overlay oscuro para legibilidad */
+            padding: 20px;
+        }
+
+        /* Se ajustan los selectores para que funcionen con la nueva estructura */
+        .dr-hero-content h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             margin-bottom: 8px;
@@ -70,7 +109,7 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .dr-hero h2 {
+        .dr-hero-content h2 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 20px;
@@ -78,7 +117,7 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
 
-        .dr-hero p {
+        .dr-hero-content p {
             font-size: 1.3rem;
             font-weight: 300;
             margin-bottom: 30px;
@@ -90,6 +129,10 @@
             color: #EE9484;
             margin-bottom: 50px;
         }
+        /* ------------------------------------------- */
+        /* --- FIN CORRECCIONES EN HERO SECTION --- */
+        /* ------------------------------------------- */
+
 
         /* --- BOTÓN PRINCIPAL (CTA) --- */
         .dr-cta-button {
@@ -115,9 +158,8 @@
 
         /* --- CONTADOR DE TIEMPO --- */
         .dr-contador-section {
-            /* Se elimina font-family: 'Playfair Display', serif; para que el texto de la unidad herede Roboto */
             background-color: #EFEEF6;
-            color: #5E57A4;
+            color: #000;
             padding: 40px 0;
         }
 
@@ -129,22 +171,19 @@
         }
 
         .dr-tiempo-unidad {
-            background-color: #EFEEF6;
-            stroke: 2px;
-            padding: 15px 20px; 
+            background-color: #fff;
+            padding: 15px 20px;
             border-radius: 8px;
             min-width: 90px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
-            /* 💡 CORRECCIÓN: Hace la fuente de la etiqueta (Días, Horas) más pequeña */
             font-size: 0.85rem; 
         }
 
         .dr-tiempo-unidad span {
             display: block;
-            /* 💡 Se fuerza Playfair para los números grandes (como estaba originalmente) */
             font-family: 'Playfair Display', serif; 
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: bold;
             color: #5E57A4;
             line-height: 1.2;
@@ -448,6 +487,68 @@
         }
 
         @media (max-width: 768px) {
+            /* ------------------------------------------- */
+            /* --- AJUSTES HERO MOBILE --- */
+            /* ------------------------------------------- */
+
+            .dr-hero {
+                /* Se cambia a Flexbox para reordenar los elementos */
+                display: flex;
+                flex-direction: column;
+                /* El padding horizontal del Hero se controla en el contenido */
+            }
+
+            .dr-hero-image-container {
+                /* Imagen Arriba (Order 1) */
+                order: 1;
+                position: static;
+                width: 100%;
+                height: auto; /* Altura flexible */
+                max-height: 400px; /* Limitar altura para que no sea excesiva */
+                /* Se quita el fondo de overlay en la imagen */
+                background-color: transparent; 
+            }
+            
+            .dr-hero-image-container img {
+                /* Asegura que la imagen sea visible sin fondo oscuro */
+                height: auto;
+                min-height: 200px;
+                object-fit: contain; /* Mostrar imagen completa (se verá letterbox si no es 16:9) */
+            }
+
+            .dr-hero-content {
+                /* Contenido Abajo (Order 2) */
+                order: 2;
+                position: static;
+                width: 100%;
+                height: auto;
+                color: #333; /* Texto oscuro para fondo claro */
+                text-align: center;
+                /* Eliminar el overlay oscuro */
+                background-color: transparent; 
+                /* Se restaura el padding vertical/horizontal */
+                padding: 30px 15px;
+                
+                /* Se asegura que los textos hereden el color normal y se elimina la sombra */
+                display: block; /* Vuelve a ser un bloque normal */
+                justify-content: initial;
+                align-items: initial;
+            }
+            
+            .dr-hero-content h1, .dr-hero-content h2, .dr-hero-content p {
+                text-shadow: none;
+                color: #333;
+                margin-bottom: 10px;
+            }
+            
+            .dr-hero-content h1 { font-size: 2.2rem; }
+            .dr-hero-content h2 { font-size: 1.3rem; }
+            .dr-info { margin-top: 15px; margin-bottom: 20px; color: #5E57A4; }
+
+            /* ------------------------------------------- */
+            /* --- FIN AJUSTES HERO MOBILE --- */
+            /* ------------------------------------------- */
+
             .dr-videos-grid {
                 flex-direction: column;
                 gap: 20px;
@@ -464,9 +565,7 @@
                 padding: 30px 0;
             }
 
-            .dr-hero { padding: 60px 15px; }
-            .dr-hero h1 { font-size: 2.5rem; }
-            .dr-hero h2 { font-size: 1.5rem; }
+            .dr-hero { padding: 0; } /* Ya no necesita padding, lo tiene el contenido */
             .dr-section h2 { font-size: 1.8rem; margin-bottom: 20px; }
             .dr-section h3 { font-size: 1.3rem; margin-bottom: 15px; }
 
@@ -474,7 +573,6 @@
             .dr-tiempo-unidad {
                 padding: 8px 10px;
                 min-width: 50px;
-                /* El tamaño de fuente en móvil ya era pequeño */
                 font-size: 0.8rem; 
             }
             .dr-tiempo-unidad span {
@@ -526,19 +624,26 @@
         </a>
 
         <header class="dr-hero" id="top">
-            <div class="dr-container">
-                <h1>Desayuno Real</h1>
-                <h2>Un encuentro que redefine el liderazgo</h2>
-                <p class="dr-info">
-                    Fecha: 6 de marzo de 2026 | Hora: 8:30 AM | Lugar: A confirmar
-                </p>
-                <a href="https://forms.gle/E1nLNpWSLKZnyEFZ7" class="dr-cta-button" target="_blank" rel="noopener noreferrer" role="button">Asistiré</a>
+            
+            <div class="dr-hero-image-container">
+                <img src="./image/DR_hero.png" alt="Imagen de fondo del evento">
+            </div>
+
+            <div class="dr-hero-content">
+                <div class="dr-container">
+                    <h1>Desayuno Real</h1>
+                    <h2>Un encuentro que redefine el liderazgo</h2>
+                    <p class="dr-info">
+                        Fecha: 6 de marzo de 2026 | Hora: 8:30 AM | Lugar: A confirmar
+                    </p>
+                    <a href="https://forms.gle/E1nLNpWSLKZnyEFZ7" class="dr-cta-button" target="_blank" rel="noopener noreferrer" role="button">Asistiré</a>
+                </div>
             </div>
         </header>
 
         <section class="dr-section dr-contador-section">
             <div class="dr-container">
-                <h2>SE ACERCA...</h2>
+                <h2>El momento se acerca...</h2>
                 <div id="dr-contador-display" aria-live="off">
                     <div class="dr-tiempo-unidad"><span id="dr-dias">00</span>Días</div>
                     <div class="dr-tiempo-unidad"><span id="dr-horas">00</span>Horas</div>
@@ -571,7 +676,7 @@
 
         <section class="dr-section">
              <div class="dr-container">
-                 <h2>MOMENTOS REALES</h2>
+                 <h2>Momentos reales</h2>
              </div>
              <div class="dr-carousel-wrapper" role="region" aria-label="Carrusel de fotos del evento">
                  <div class="dr-carousel-inner" id="dr-carousel-inner">
@@ -589,7 +694,7 @@
 
         <section class="dr-section dr-videos-section">
             <div class="dr-container">
-                <h2>MIRÁ</h2>
+                <h2>Mirá los mejores momentos</h2>
                 <div class="dr-videos-grid"> 
 
                     <div class="dr-video-container">
@@ -616,7 +721,7 @@
 
         <section class="dr-section dr-map-section">
             <div class="dr-container">
-                <h2>UBICACIÓN</h2>
+                <h2>Ubicación del evento</h2>
             </div>
             <div class="dr-map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d26795.33335006546!2d-68.8143298518181!3d-32.91358798344047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d-32.896406!2d-68.8326788!4m5!1s0x967e0dcac1b78d11%3A0x401ba2de0f77a930!2sQuinta%20Do%C3%B1a%20Elvira%2C%20callej%C3%B3n%20famatina%201783%20rodeo%20de%20la%20cruz%205525%2C%20Mendoza!3m2!1d-32.9307103!2d-68.7622521!5e0!3m2!1ses-419!2sar!4v1761057444580!5m2!1ses-419!2sar"
@@ -630,7 +735,7 @@
 
         <section class="dr-section dr-sponsors-section">
             <div class="dr-container">
-                <h3>ORGANIZA</h3>
+                <h3>Organizan</h3>
                 <div class="dr-sponsors-grid">
                     <a href="https://ciudadano.news/" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
                         <img src="./Recursos/logo_cn.svg" alt="Logo de Ciudadano News">
@@ -645,7 +750,7 @@
 
         <section class="dr-section dr-sponsors-section" style="padding-top: 0;">
             <div class="dr-container">
-                <h3>ACOMPAÑAN</h3>
+                <h3>Nos acompañan</h3>
                 <div class="dr-sponsors-grid">
                     <a href="[URL_DEL_SPONSOR_1]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
                         <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 1">
