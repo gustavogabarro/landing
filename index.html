@@ -45,7 +45,7 @@
         }
         
         .dr-section h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 40px;
         }
         
@@ -115,9 +115,9 @@
 
         /* --- CONTADOR DE TIEMPO --- */
         .dr-contador-section {
-            font-family: 'Playfair Display', serif;
+            /* Se elimina font-family: 'Playfair Display', serif; para que el texto de la unidad herede Roboto */
             background-color: #EFEEF6;
-            color: #000;
+            color: #5E57A4;
             padding: 40px 0;
         }
 
@@ -129,17 +129,22 @@
         }
 
         .dr-tiempo-unidad {
-            background-color: #fff;
-            padding: 15px 20px;
+            background-color: #EFEEF6;
+            stroke: 2px;
+            padding: 15px 20px; 
             border-radius: 8px;
             min-width: 90px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
             text-align: center;
+            /* 💡 CORRECCIÓN: Hace la fuente de la etiqueta (Días, Horas) más pequeña */
+            font-size: 0.85rem; 
         }
 
         .dr-tiempo-unidad span {
             display: block;
-            font-size: 3rem;
+            /* 💡 Se fuerza Playfair para los números grandes (como estaba originalmente) */
+            font-family: 'Playfair Display', serif; 
+            font-size: 4rem;
             font-weight: bold;
             color: #5E57A4;
             line-height: 1.2;
@@ -272,22 +277,18 @@
             padding: 60px 0;
         }
         .dr-videos-grid {
-            /* 💡 CORRECCIÓN: Cambia la dirección del flexbox a columna (uno arriba del otro) */
             display: flex;
             flex-direction: column; 
             gap: 30px;
             justify-content: center;
-            align-items: center; /* Centra los videos apilados */
-            max-width: 800px; /* Limita el ancho de los videos apilados en escritorio */
-            margin: 0 auto; /* Centra la columna de videos */
+            align-items: center; 
+            max-width: 800px; 
+            margin: 0 auto; 
         }
         .dr-video-container {
-            /* Ahora que están apilados, flex: 1 ya no es necesario, pero lo mantenemos como 
-               una regla de reseteo por si se cambia el flex-direction */
             flex: none; 
             position: relative;
-            width: 100%; /* Ocupa el 100% del dr-videos-grid (máx 800px) */
-            /* truco para mantener relación de aspecto 16:9: (9/16)*100 = 56.25% */
+            width: 100%; 
             padding-bottom: 56.25%; 
             height: 0;
             overflow: hidden;
@@ -300,7 +301,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            max-width: 100%;
+            max-width: 100%; 
             border: none;
         }
         /* --- FIN CORRECCIÓN --- */
@@ -351,7 +352,7 @@
             background-color: #fff;
             border-radius: 8px;
             height: 200px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
         }
@@ -447,12 +448,10 @@
         }
 
         @media (max-width: 768px) {
-            /* 💡 Nota: La configuración de videos en móvil ya estaba como flex-direction: column, 
-               pero se re-valida para asegurar que la regla de escritorio no interfiera. */
             .dr-videos-grid {
                 flex-direction: column;
                 gap: 20px;
-                max-width: 100%; /* En móvil debe usar todo el ancho */
+                max-width: 100%; 
             }
             
             .dr-floating-logo {
@@ -475,6 +474,8 @@
             .dr-tiempo-unidad {
                 padding: 8px 10px;
                 min-width: 50px;
+                /* El tamaño de fuente en móvil ya era pequeño */
+                font-size: 0.8rem; 
             }
             .dr-tiempo-unidad span {
                 font-size: 1.5rem;
@@ -537,7 +538,7 @@
 
         <section class="dr-section dr-contador-section">
             <div class="dr-container">
-                <h2>El momento se acerca...</h2>
+                <h2>SE ACERCA...</h2>
                 <div id="dr-contador-display" aria-live="off">
                     <div class="dr-tiempo-unidad"><span id="dr-dias">00</span>Días</div>
                     <div class="dr-tiempo-unidad"><span id="dr-horas">00</span>Horas</div>
@@ -570,7 +571,7 @@
 
         <section class="dr-section">
              <div class="dr-container">
-                 <h2>Momentos reales</h2>
+                 <h2>MOMENTOS REALES</h2>
              </div>
              <div class="dr-carousel-wrapper" role="region" aria-label="Carrusel de fotos del evento">
                  <div class="dr-carousel-inner" id="dr-carousel-inner">
@@ -588,7 +589,7 @@
 
         <section class="dr-section dr-videos-section">
             <div class="dr-container">
-                <h2>Mirá los mejores momentos</h2>
+                <h2>MIRÁ</h2>
                 <div class="dr-videos-grid"> 
 
                     <div class="dr-video-container">
@@ -615,7 +616,7 @@
 
         <section class="dr-section dr-map-section">
             <div class="dr-container">
-                <h2>Ubicación del evento</h2>
+                <h2>UBICACIÓN</h2>
             </div>
             <div class="dr-map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d26795.33335006546!2d-68.8143298518181!3d-32.91358798344047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d-32.896406!2d-68.8326788!4m5!1s0x967e0dcac1b78d11%3A0x401ba2de0f77a930!2sQuinta%20Do%C3%B1a%20Elvira%2C%20callej%C3%B3n%20famatina%201783%20rodeo%20de%20la%20cruz%205525%2C%20Mendoza!3m2!1d-32.9307103!2d-68.7622521!5e0!3m2!1ses-419!2sar!4v1761057444580!5m2!1ses-419!2sar"
@@ -629,7 +630,7 @@
 
         <section class="dr-section dr-sponsors-section">
             <div class="dr-container">
-                <h3>Organizan</h3>
+                <h3>ORGANIZA</h3>
                 <div class="dr-sponsors-grid">
                     <a href="https://ciudadano.news/" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
                         <img src="./Recursos/logo_cn.svg" alt="Logo de Ciudadano News">
@@ -644,7 +645,7 @@
 
         <section class="dr-section dr-sponsors-section" style="padding-top: 0;">
             <div class="dr-container">
-                <h3>Nos acompañan</h3>
+                <h3>ACOMPAÑAN</h3>
                 <div class="dr-sponsors-grid">
                     <a href="[URL_DEL_SPONSOR_1]" class="dr-sponsor-item" target="_blank" rel="noopener noreferrer">
                         <img src="./Recursos/tu_logo.svg" alt="Logo de Sponsor 1">
