@@ -61,7 +61,6 @@
         /* Contenedor principal que contendrá la imagen (fondo) y el texto (primer plano) */
         .dr-hero {
             position: relative;
-            /* Se eliminan el padding y el background de imagen aquí. */
             padding: 0; 
             background: none;
         }
@@ -71,13 +70,20 @@
             position: relative;
             overflow: hidden;
             width: 100%;
-            height: 600px; /* Alto fijo para Desktop */
+            /* 💡 CORRECCIÓN CLAVE: Usamos el truco de padding-bottom (1080/1920 = 56.25%) 
+               para forzar la proporción 16:9 y asegurar que la imagen se vea completa. */
+            padding-bottom: 56.25%; 
+            height: 0; /* Necesario para que el padding-bottom funcione como altura */
         }
         
         .dr-hero-image-container img {
+            position: absolute; /* Ocupa el espacio creado por el padding-bottom */
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Asegura que la imagen 1920x1080 cubra el contenedor */
+            /* Asegura que la imagen 16:9 cubra el contenedor 16:9 *sin* recortar */
+            object-fit: cover; 
             display: block;
         }
 
@@ -88,15 +94,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 5; /* Asegura que esté por encima de la imagen */
+            z-index: 5;
             color: #fff;
             text-align: center;
-            /* Se utiliza Flexbox para centrar el contenido verticalmente */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.6); /* Overlay oscuro para legibilidad */
+            background-color: rgba(0, 0, 0, 0.6);
             padding: 20px;
         }
 
@@ -492,10 +497,8 @@
             /* ------------------------------------------- */
 
             .dr-hero {
-                /* Se cambia a Flexbox para reordenar los elementos */
                 display: flex;
                 flex-direction: column;
-                /* El padding horizontal del Hero se controla en el contenido */
             }
 
             .dr-hero-image-container {
@@ -503,17 +506,20 @@
                 order: 1;
                 position: static;
                 width: 100%;
-                height: auto; /* Altura flexible */
-                max-height: 400px; /* Limitar altura para que no sea excesiva */
-                /* Se quita el fondo de overlay en la imagen */
+                height: auto;
+                max-height: 400px;
                 background-color: transparent; 
+                
+                /* 💡 CORRECCIÓN: Se revierte la proporción en móvil para permitir 
+                   que el ancho de la imagen sea flexible y solo la altura sea limitada. */
+                padding-bottom: 0; 
             }
             
             .dr-hero-image-container img {
-                /* Asegura que la imagen sea visible sin fondo oscuro */
                 height: auto;
                 min-height: 200px;
-                object-fit: contain; /* Mostrar imagen completa (se verá letterbox si no es 16:9) */
+                object-fit: contain; /* Mostrar imagen completa, sin recorte */
+                position: static;
             }
 
             .dr-hero-content {
@@ -522,15 +528,12 @@
                 position: static;
                 width: 100%;
                 height: auto;
-                color: #333; /* Texto oscuro para fondo claro */
+                color: #333;
                 text-align: center;
-                /* Eliminar el overlay oscuro */
                 background-color: transparent; 
-                /* Se restaura el padding vertical/horizontal */
                 padding: 30px 15px;
                 
-                /* Se asegura que los textos hereden el color normal y se elimina la sombra */
-                display: block; /* Vuelve a ser un bloque normal */
+                display: block;
                 justify-content: initial;
                 align-items: initial;
             }
@@ -565,7 +568,7 @@
                 padding: 30px 0;
             }
 
-            .dr-hero { padding: 0; } /* Ya no necesita padding, lo tiene el contenido */
+            .dr-hero { padding: 0; }
             .dr-section h2 { font-size: 1.8rem; margin-bottom: 20px; }
             .dr-section h3 { font-size: 1.3rem; margin-bottom: 15px; }
 
@@ -666,8 +669,8 @@
                         <br>
                         <p>
                             <strong>Un homenaje exclusivo a la Reina y Virreina Nacional de la Vendimia, reinas departamentales y a la vitivinicultura, uno de los sectores más productivos de la República Argentina.</strong>  <br>
-                                                         <br><br>
-                                                         Ideado y creado por La Cooperativa Empresa Eléctrica de Godoy Cruz Ltda. (provincia de Mendoza), y Grupo Cooperativa – Medios de Comunicación (Región Cuyo).
+                            <br><br>
+                                    Ideado y creado por La Cooperativa Empresa Eléctrica de Godoy Cruz Ltda. (provincia de Mendoza), y Grupo Cooperativa – Medios de Comunicación (Región Cuyo).
                         </p>
                     </div>
                 </div>
